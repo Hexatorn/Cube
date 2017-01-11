@@ -3,5 +3,6 @@
  */
 public class Cube {
 
+    //komentarz test3
 
 }
