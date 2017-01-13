@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41b1ba14-2634-4f42-a8a2-9539c07b7570" name="Default" comment="Refaktoryzacja klasy Animator, zmiana przyjmowanych argumentów w konstruktoprze">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/hexatorn.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hexatorn/CubeWindow/View3D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="41b1ba14-2634-4f42-a8a2-9539c07b7570" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cube.java" afterPath="$PROJECT_DIR$/src/Cube.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hexatorn/CubeWindow/Window.java" afterPath="$PROJECT_DIR$/src/hexatorn/CubeWindow/Window.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hexatorn/Point.java" afterPath="$PROJECT_DIR$/src/hexatorn/Point.java" />
     </list>
     <ignored path="Cube.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -460,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484335552966</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refaktoryzacja klasy Animator.&#10;&#10;Zmiana przyjmowanych argumentów w konstruktoprze">
+      <created>1484335682355</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1484335682355</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -535,7 +536,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test Gita w Inteligy Idea" />
     <MESSAGE value="Refaktoryzacja klasy Animator, zmiana przyjmowanych argumentów w konstruktoprze" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refaktoryzacja klasy Animator, zmiana przyjmowanych argumentów w konstruktoprze" />
+    <MESSAGE value="Refaktoryzacja klasy Animator.&#10;&#10;Zmiana przyjmowanych argumentów w konstruktoprze" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refaktoryzacja klasy Animator.&#10;&#10;Zmiana przyjmowanych argumentów w konstruktoprze" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
