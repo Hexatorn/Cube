@@ -19,9 +19,9 @@ class Animator {
     Delegate paintDelegate = new Delegate();
 
 
-    public Animator(JFrame window){
-        this.component = window;
-        gDc = window.getGraphics();
+    Animator(Component component ){
+        this.component = component;
+        gDc = component.getGraphics();
 
         paintDelegate.addPaintMethod(new Refresh());
         paintDelegate.addPaintMethod(new WindowName());
