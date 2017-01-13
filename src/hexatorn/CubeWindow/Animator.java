@@ -10,18 +10,19 @@ import java.util.*;
 import java.util.List;
 import hexatorn.Point;
 
-public class Animator {
+class Animator {
 
-    int degrees_AngleOfView = 45;
-    Point point00 = new Point();
-    Graphics gDc;
-    JFrame window;
+    private int degrees_AngleOfView = 45;
+    private Point point00 = new Point();
+    private Graphics gDc;
+    private Component component;
     Delegate paintDelegate = new Delegate();
 
-    public Animator(JFrame window){
 
-        this.window = window;
+    public Animator(JFrame window){
+        this.component = window;
         gDc = window.getGraphics();
+
         paintDelegate.addPaintMethod(new Refresh());
         paintDelegate.addPaintMethod(new WindowName());
         paintDelegate.addPaintMethod(new HelpLines());
@@ -29,16 +30,16 @@ public class Animator {
     }
 
     void updatePoint00(){
-        point00.setX(window.getSize().width/2);
-        point00.setY(window.getSize().height/2);
+        point00.setX(component.getSize().width/2);
+        point00.setY(component.getSize().height/2);
     }
 
     class HelpLines implements PaintListener{
 
         @Override
         public void paintSomeone(Graphics gDC) {
-            int height = window. getSize().height;
-            int wedth = window.getSize().width;
+            int height = component. getSize().height;
+            int wedth = component.getSize().width;
 
             //x-axis
             gDC.drawLine(
@@ -74,7 +75,7 @@ public class Animator {
 
         @Override
         public void paintSomeone(Graphics gDC) {
-            gDc.clearRect(0,0,window.getSize().width,window.getSize().height);
+            gDc.clearRect(0,0,component.getSize().width,component.getSize().height);
         }
     }
 
