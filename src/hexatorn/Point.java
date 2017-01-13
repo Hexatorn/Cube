@@ -5,8 +5,8 @@ package hexatorn;
 
 public class Point {
 
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public void setX(int x) {
         this.x = x;
