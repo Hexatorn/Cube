@@ -10,14 +10,14 @@ import java.awt.*;
 
 public class Window extends JFrame{
 
-    private Animator animator;
+    private JPanel panelView;
 
     private Window(){
         super("Cube");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280,800);
         setVisible(true);
-        animator = new Animator(this);
+
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("menu");
@@ -27,21 +27,11 @@ public class Window extends JFrame{
         menuBar.add(menu);
         menu.add(mItem01);
 
+        panelView = new View3D();
+        add(panelView);
+        pack();
     }
 
-
-   public void paint (Graphics gDC){
-        if (animator == null)
-            return;
-        /**
-         * aktualizacja początku osi współrzędnych
-         */
-        animator.updatePoint00();
-        /**
-         * Wywołanie delagaty z metodami rysującymi/przerysowywującymi poszczególne fragmenty okna
-         */
-        animator.paintDelegate.paint();
-    }
 
     public static void main(String[] args) {
         int i = 1;
