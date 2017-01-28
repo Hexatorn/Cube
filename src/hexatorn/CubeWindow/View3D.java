@@ -24,7 +24,7 @@ class View3D extends JPanel {
     View3D(){
         setPreferredSize(new Dimension(400, 400));
         paintDelegate.addPaintMethod(new WindowName());
-        paintDelegate.addPaintMethod(new HelpLines());
+        //paintDelegate.addPaintMethod(new HelpLines());
     }
 
 
@@ -89,6 +89,9 @@ class View3D extends JPanel {
         }
     }
 
+    public void setShowHelpLine(){
+        paintDelegate.addPaintMethod(new HelpLines());
+    }
 
     /**
      * Obsługa Delegt podobnie jak w C#
