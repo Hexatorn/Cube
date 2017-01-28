@@ -1,28 +1,28 @@
+/**
+ * Created by Hexatorn on 2017-01-13.
+ */
+
 package hexatorn.CubeWindow;
 
-
 import hexatorn.point.Point;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-/**
- * Created by Hexatorn on 2017-01-13.
- */
 class View3D extends JPanel {
 
     private int degrees_AngleOfView = 45;
     private Point point00 = new Point();
     private Delegate paintDelegate = new Delegate();
+    private Color backgroundColor = Color.DARK_GRAY;
+    private Color usingColor = new Color(255,205,100);
 
     /**
      * Konstruktor Panelu z Obiektem 3D
      */
     View3D(){
         setPreferredSize(new Dimension(400, 400));
-
         paintDelegate.addPaintMethod(new WindowName());
         paintDelegate.addPaintMethod(new HelpLines());
     }
@@ -105,6 +105,8 @@ class View3D extends JPanel {
         }
 
         void paint(Graphics g){
+            setBackground(backgroundColor);
+            g.setColor(usingColor);
             for (PaintListener pl : listeners)
                 pl.paintSomeone(g);
         }
