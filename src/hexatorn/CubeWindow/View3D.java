@@ -24,7 +24,7 @@ class View3D extends JPanel {
     View3D(){
         setPreferredSize(new Dimension(400, 400));
         paintDelegate.addPaintMethod(new WindowName());
-        //paintDelegate.addPaintMethod(new HelpLines());
+        paintDelegate.addPaintMethod(new HelpLines());
     }
 
 
@@ -50,7 +50,6 @@ class View3D extends JPanel {
     class HelpLines implements PaintListener{
 
         @Override
-
         public void paintSomeone(Graphics g) {
             int height = getSize().height;
             int wedth = getSize().width;
@@ -76,6 +75,11 @@ class View3D extends JPanel {
                     point00.getY()-(int) (point00.getX()*Math.tan(radians_AngleOfView)));
             //System.out.println(Math.tan(radians_AngleOfView));
         }
+
+        @Override
+        public String toString() {
+            return "Help Lines";
+        }
     }
 
     /**
@@ -87,10 +91,19 @@ class View3D extends JPanel {
         public void paintSomeone(Graphics g) {
             g.drawString("Cube Window Project; punkt 00 "+point00.getX()+" "+point00.getY(),20,50);
         }
+
+        @Override
+        public String toString() {
+            return "Windows Name";
+        }
     }
 
     public void setShowHelpLine(){
         paintDelegate.addPaintMethod(new HelpLines());
+    }
+
+    public void setHideHelpLine(){
+        paintDelegate.removePaintMethod(new HelpLines());
     }
 
     /**
@@ -103,10 +116,17 @@ class View3D extends JPanel {
     class Delegate{
         private List<PaintListener> listeners = new ArrayList<>();
 
-        void addPaintMethod(PaintListener toAdd){
+        void addPaintMethod(PaintListener toAdd) {
             listeners.add(toAdd);
         }
-
+        void removePaintMethod(PaintListener toRemove){
+            List<PaintListener> objectToRemove = new ArrayList<>();
+            for(PaintListener pl : listeners)
+                if(toRemove.toString()==pl.toString())
+                    objectToRemove.add(pl);
+            for (PaintListener rmPL : objectToRemove)
+                listeners.remove(rmPL);
+        }
         void paint(Graphics g){
             setBackground(backgroundColor);
             g.setColor(usingColor);
