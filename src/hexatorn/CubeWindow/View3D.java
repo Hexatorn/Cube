@@ -106,6 +106,14 @@ class View3D extends JPanel {
         paintDelegate.removePaintMethod(new HelpLines());
     }
 
+    public  void  setShowWindowsName(){
+        paintDelegate.addPaintMethod(new WindowName());
+    }
+
+    public void setHideWindowsName(){
+        paintDelegate.removePaintMethod(new WindowName());
+    }
+
     /**
      * Obsługa Delegt podobnie jak w C#
      * Tablica Metod wywoływanych jedną komendą.

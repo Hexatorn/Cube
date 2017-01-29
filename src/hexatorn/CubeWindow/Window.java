@@ -29,7 +29,7 @@ public class Window extends JFrame{
         mIClose.setName("mIClose");
         JMenuItem mIShowCoordinateLine = new JCheckBoxMenuItem("Osie współrzędnych");
         ((JCheckBoxMenuItem)mIShowCoordinateLine).setState(true);
-        AbstractAction action = new AbstractAction("Osie współrzędnych") {
+        AbstractAction actionShowCoordinateLine = new AbstractAction("Osie współrzędnych") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 View3D view3D = (View3D)panelView;
@@ -43,15 +43,27 @@ public class Window extends JFrame{
                 view3D.repaint();
             }
         };
-        mIShowCoordinateLine.addActionListener(action);
+        mIShowCoordinateLine.addActionListener(actionShowCoordinateLine);
         mIShowCoordinateLine.setName("mIShowCoordinateLine");
-
-        JMenuItem mIShowText = new JCheckBoxMenuItem(new AbstractAction() {
+        JMenuItem mIShowText = new JCheckBoxMenuItem("Windows Name");
+        ((JCheckBoxMenuItem)mIShowText).setState(true);
+        AbstractAction actionShowText = new AbstractAction("Windows Name") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(((JCheckBoxMenuItem)mIShowCoordinateLine).getState());
+                View3D view3D = (View3D)panelView;
+                JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowText;
+                if(jCheckBoxMenuItem.getState()==true) {
+                    view3D.setShowWindowsName();
+                    System.out.println("show");
+                }
+                if(jCheckBoxMenuItem.getState()==false) {
+                    view3D.setHideWindowsName();
+                    System.out.println("hide");
+                }
+                view3D.repaint();
             }
-        });
+        };
+        mIShowText.addActionListener(actionShowText);
         mIShowText.setName("mIShowText");
 
         setJMenuBar(menuBar);
