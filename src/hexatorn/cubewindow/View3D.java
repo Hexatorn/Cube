@@ -2,13 +2,14 @@
  * Created by Hexatorn on 2017-01-13.
  */
 
-package hexatorn.CubeWindow;
+package hexatorn.cubewindow;
 
 import hexatorn.point.Point;
+import hexatorn.util.Delegate;
+import hexatorn.util.PaintListener;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 class View3D extends JPanel {
 
@@ -23,8 +24,8 @@ class View3D extends JPanel {
      */
     View3D(){
         setPreferredSize(new Dimension(400, 400));
-        paintDelegate.addPaintMethod(new WindowName());
-        paintDelegate.addPaintMethod(new HelpLines());
+        paintDelegate.addMethod(new WindowName());
+        paintDelegate.addMethod(new HelpLines());
     }
 
 
@@ -33,7 +34,9 @@ class View3D extends JPanel {
         super.paintComponent(g);
 
         updatePoint00();
-        paintDelegate.paint(g);
+        setBackground(backgroundColor);
+        g.setColor(usingColor);
+        paintDelegate.run(g);
     }
 
     /**
@@ -47,7 +50,7 @@ class View3D extends JPanel {
     /**
      * Klasa rysująca osie współrzędnych
      */
-    class HelpLines implements PaintListener{
+    class HelpLines implements PaintListener {
 
         @Override
         public void paintSomeone(Graphics g) {
@@ -99,48 +102,19 @@ class View3D extends JPanel {
     }
 
     public void setShowHelpLine(){
-        paintDelegate.addPaintMethod(new HelpLines());
+        paintDelegate.addMethod(new HelpLines());
     }
 
     public void setHideHelpLine(){
-        paintDelegate.removePaintMethod(new HelpLines());
+        paintDelegate.removeMethod(new HelpLines());
     }
 
     public  void  setShowWindowsName(){
-        paintDelegate.addPaintMethod(new WindowName());
+        paintDelegate.addMethod(new WindowName());
     }
 
     public void setHideWindowsName(){
-        paintDelegate.removePaintMethod(new WindowName());
+        paintDelegate.removeMethod(new WindowName());
     }
 
-    /**
-     * Obsługa Delegt podobnie jak w C#
-     * Tablica Metod wywoływanych jedną komendą.
-     */
-    interface PaintListener{
-        void paintSomeone(Graphics g);
-    }
-    class Delegate{
-        private List<PaintListener> listeners = new ArrayList<>();
-
-        void addPaintMethod(PaintListener toAdd) {
-            listeners.add(toAdd);
-        }
-        void removePaintMethod(PaintListener toRemove){
-            List<PaintListener> objectToRemove = new ArrayList<>();
-            for(PaintListener pl : listeners)
-                if(toRemove.toString()==pl.toString())
-                    objectToRemove.add(pl);
-            for (PaintListener rmPL : objectToRemove)
-                listeners.remove(rmPL);
-        }
-        void paint(Graphics g){
-            setBackground(backgroundColor);
-            g.setColor(usingColor);
-            for (PaintListener pl : listeners)
-                pl.paintSomeone(g);
-        }
-
-    }
 }
