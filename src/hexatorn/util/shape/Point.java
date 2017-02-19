@@ -1,12 +1,12 @@
 /**
  * Created by hexatorn on 2016-10-16.
  */
-package hexatorn.draw.point;
+package hexatorn.util.shape;
 
 public class Point {
 
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
     public Point(){
 
     }

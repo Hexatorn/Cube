@@ -19,23 +19,24 @@ import java.awt.*;
     public void paintSomeone(Graphics g) {
         //x-axis
         g.drawLine(
+                angleOfView.getPanelSize().width/2*-1,
                 0,
-                angleOfView.getPoint00().getY(),
-                angleOfView.getPoint00().getX()*2,
-                angleOfView.getPoint00().getY());
+                angleOfView.getPanelSize().width/2,
+                0);
         //y-axis
         g.drawLine(
-                angleOfView.getPoint00().getX(),
                 0,
-                angleOfView.getPoint00().getX(),
-                angleOfView.getPoint00().getY()*2);
+                angleOfView.getPanelSize().height/2*-1,
+                0,
+                angleOfView.getPanelSize().height/2);
         //z-axis
         double radians_AngleOfView = Math.toRadians(angleOfView.getDegrees());
+        System.out.println(""+angleOfView.getDegrees()+"\t"+radians_AngleOfView+"\t"+Math.tan(radians_AngleOfView));
         g.drawLine(
-                0,
-                angleOfView.getPoint00().getY()+(int) (angleOfView.getPoint00().getX()*Math.tan(radians_AngleOfView)),
-                angleOfView.getPoint00().getX()*2,
-                angleOfView.getPoint00().getY()-(int) (angleOfView.getPoint00().getX()*Math.tan(radians_AngleOfView)));
+                angleOfView.getPanelSize().width/2*-1,
+                (int)(angleOfView.getPanelSize().width/2*Math.tan(radians_AngleOfView)),
+                angleOfView.getPanelSize().width/2,
+                (int)(angleOfView.getPanelSize().width/2*Math.tan(radians_AngleOfView)*-1));
     }
 
     @Override

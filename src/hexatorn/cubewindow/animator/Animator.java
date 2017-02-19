@@ -13,6 +13,7 @@ public class Animator {
         this.view3D = view3D;
         paintDelegate.addMethod(new WindowName(view3D));
         paintDelegate.addMethod(new HelpLines(view3D));
+        paintDelegate.addMethod(new DrawablePoint(view3D,100,200));
     }
 
     public void paint(Graphics g){

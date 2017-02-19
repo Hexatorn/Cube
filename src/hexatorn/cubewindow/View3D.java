@@ -5,7 +5,7 @@
 package hexatorn.cubewindow;
 
 import hexatorn.cubewindow.animator.Animator;
-import hexatorn.draw.point.Point;
+import hexatorn.util.shape.Point;
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,7 +32,8 @@ public class View3D extends JPanel {
      */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        this.angleOfView.updatePoint00();
+//        this.angleOfView.updatePoint00();
+        g.translate(getSize().width/2,getSize().height/2);
         setBackground(backgroundColor);
         g.setColor(usingColor);
         animator.paint(g);
@@ -50,17 +51,17 @@ public class View3D extends JPanel {
 
     public class AngleOfView{
         private int degrees = 45;
-        public Point point00 = new Point();
-        public void updatePoint00(){
-            point00.setX(getSize().width/2);
-            point00.setY(getSize().height/2);
-        }
+//        public Point point00 = new Point();
+//        public void updatePoint00(){
+//            point00.setX(getSize().width/2);
+//            point00.setY(getSize().height/2);
+//        }
         public int getDegrees(){
             return degrees;
         }
-        public Point getPoint00(){
-            return point00;
-        }
+//        public Point getPoint00(){
+//            return point00;
+//        }
         public Dimension getPanelSize(){
             return getSize();
         }
