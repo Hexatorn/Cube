@@ -11,7 +11,7 @@ public class Animator {
     private View3D.AngleOfView angleOfView;
     public Animator(View3D.AngleOfView angleOfView) {
         this.angleOfView = angleOfView;
-        paintDelegate.addMethod(new WindowName(angleOfView));
+        paintDelegate.addMethod(new WindowName(angleOfView,10,20));
         paintDelegate.addMethod(new HelpLines(angleOfView));
         paintDelegate.addMethod(new DrawablePoint(angleOfView,100,200));
     }

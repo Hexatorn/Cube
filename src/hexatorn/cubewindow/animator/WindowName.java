@@ -10,14 +10,23 @@ import java.awt.*;
  */
 public class WindowName extends AbstractDraw implements PaintListener {
 
+    int x = 20;
+    int y = 50;
+
     public WindowName(View3D.AngleOfView angleOfView) {
         super(angleOfView);
+    }
+    public WindowName(View3D.AngleOfView angleOfView, int x, int y) {
+        super(angleOfView);
+        this.x = x;
+        this.y = y;
     }
 
     @Override
     public void paintSomeone(Graphics g) {
-        //g.drawString("Cube Window Project; punkt 00 "+angleOfView.getPoint00().getX()+" "+angleOfView.getPoint00().getY(),20,50);
-        g.drawString("Cube Window Project; punkt 00 ",20,50);
+        g.drawString("Cube Window Project; punkt 00 "+angleOfView.getPanelSize().width/2+" "+angleOfView.getPanelSize().height/2,
+                (angleOfView.getPanelSize().width/2*-1)+x,
+                (angleOfView.getPanelSize().height/2*-1)+y);
     }
 
     @Override

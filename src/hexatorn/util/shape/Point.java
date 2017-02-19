@@ -31,10 +31,10 @@ public class Point {
     public int getY() {
         return y;
     }
-    public int getDrowableX(){
+    public int getDrawableX(){
         return getX();
     }
-    public int getDrowableY(){
+    public int getDrawableY(){
         return getY()*-1;
     }
 }
