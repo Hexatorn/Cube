@@ -29,7 +29,7 @@ public class DrawablePoint extends AbstractDraw implements PaintListener {
 
     @Override
     public void paintSomeone(Graphics g) {
-        g.fillOval(point.getX()-(size/2),point.getY()-(size/2),size,size);
+        g.fillOval(point.getDrowableX()-(size/2),point.getDrowableY()-(size/2),size,size);
     }
 
 

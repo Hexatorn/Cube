@@ -31,4 +31,10 @@ public class Point {
     public int getY() {
         return y;
     }
+    public int getDrowableX(){
+        return getX();
+    }
+    public int getDrowableY(){
+        return getY()*-1;
+    }
 }
