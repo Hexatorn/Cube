@@ -1,4 +1,4 @@
-package hexatorn.point;
+package hexatorn.draw.point;
 
 /**
  * Created by hexatorn on 2017-01-31.

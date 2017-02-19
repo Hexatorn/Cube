@@ -1,7 +1,7 @@
 /**
  * Created by hexatorn on 2016-10-16.
  */
-package hexatorn.point;
+package hexatorn.draw.point;
 
 public class Point {
 

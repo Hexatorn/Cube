@@ -15,70 +15,114 @@ public class Window extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280,800);
         setVisible(true);
+        /**
+         * Utworzenie Głównego widoku i dodanie do kontenera
+         */
         panelView = new View3D();
-
-        JMenuBar menuBar = new JMenuBar();
-        JMenu mFile = new JMenu("Plik");
-        mFile.setName("MiFile");
-        JMenu mView = new JMenu("Widok");
-        mView.setName("mView");
-        JMenuItem mISave = new JMenuItem("Zapisz");
-        mISave.setName("mISave");
-        JMenuItem mIRead = new JMenuItem("Wczytaj");
-        mIRead.setName("mIRead");
-        JMenuItem mIClose = new JMenuItem("Zamknij");
-        mIClose.setName("mIClose");
-        JMenuItem mIShowCoordinateLine = new JCheckBoxMenuItem("Osie współrzędnych");
-        ((JCheckBoxMenuItem)mIShowCoordinateLine).setState(true);
-        AbstractAction actionShowCoordinateLine = new AbstractAction("Osie współrzędnych") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                View3D view3D = (View3D)panelView;
-                JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowCoordinateLine;
-                if(jCheckBoxMenuItem.getState()==true) {
-                    view3D.getAnimator().setShowHelpLine();
-                }
-                if(jCheckBoxMenuItem.getState()==false) {
-                    view3D.getAnimator().setHideHelpLine();
-                }
-                view3D.repaint();
-            }
-        };
-        mIShowCoordinateLine.addActionListener(actionShowCoordinateLine);
-        mIShowCoordinateLine.setName("mIShowCoordinateLine");
-        JMenuItem mIShowText = new JCheckBoxMenuItem("Windows Name");
-        ((JCheckBoxMenuItem)mIShowText).setState(true);
-        AbstractAction actionShowText = new AbstractAction("Windows Name") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                View3D view3D = (View3D)panelView;
-                JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowText;
-                if(jCheckBoxMenuItem.getState()==true) {
-                    view3D.getAnimator().setShowWindowsName();
-                    System.out.println("show");
-                }
-                if(jCheckBoxMenuItem.getState()==false) {
-                    view3D.getAnimator().setHideWindowsName();
-                    System.out.println("hide");
-                }
-                view3D.repaint();
-            }
-        };
-        mIShowText.addActionListener(actionShowText);
-        mIShowText.setName("mIShowText");
-
-        setJMenuBar(menuBar);
-        menuBar.add(mFile);
-        menuBar.add(mView);
-        mFile.add(mISave);
-        mFile.add(mIRead);
-        mFile.add(mIClose);
-        mView.add(mIShowCoordinateLine);
-        mView.add(mIShowText);
-
-
         add(panelView);
         pack();
+        /**
+         * Utworzenie głównego menu
+         */
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        /**
+         * Utworzenie menu plik
+         */
+        JMenu mFile = new JMenu("Plik");
+        mFile.setName("MiFile");
+        menuBar.add(mFile);
+        /**
+         * Utworzenie menu widok
+         */
+        JMenu mView = new JMenu("Widok");
+        mView.setName("mView");
+        menuBar.add(mView);
+        /**
+         * Utworzenie i obsługa przycisku Plik -> Zapisz
+         */
+        JMenuItem mISave = new JMenuItem("Zapisz");
+        mISave.setName("mISave");
+        mFile.add(mISave);
+        /**
+         * Utworzenie i obsługa przycisku Plik -> Wczytaj
+         */
+        JMenuItem mIRead = new JMenuItem("Wczytaj");
+        mIRead.setName("mIRead");
+        mFile.add(mIRead);
+        /**
+         * Utworzenie i obsługa przycisku Plik -> Zamknij
+         */
+        {
+            JMenuItem mIClose = new JMenuItem("Zamknij");
+            AbstractAction actionClose = new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dispose();
+                }
+            };
+            mIClose.addActionListener(actionClose);
+            mIClose.setName("mIClose");
+            mFile.add(mIClose);
+        }
+        /**
+         * Utworzenie i obsługa przycisku Widok->Osie współrzędnych
+         */
+        {
+            JMenuItem mIShowCoordinateLine = new JCheckBoxMenuItem("Osie współrzędnych");
+            ((JCheckBoxMenuItem) mIShowCoordinateLine).setState(true);
+            AbstractAction actionShowCoordinateLine = new AbstractAction("Osie współrzędnych") {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    View3D view3D = (View3D) panelView;
+                    JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowCoordinateLine;
+                    if (jCheckBoxMenuItem.getState() == true) {
+                        view3D.getAnimator().setShowHelpLine();
+                    }
+                    if (jCheckBoxMenuItem.getState() == false) {
+                        view3D.getAnimator().setHideHelpLine();
+                    }
+                    view3D.repaint();
+                }
+            };
+            mIShowCoordinateLine.addActionListener(actionShowCoordinateLine);
+            mIShowCoordinateLine.setName("mIShowCoordinateLine");
+            mView.add(mIShowCoordinateLine);
+        }
+        /**
+         * Utworzenie i obsługa przycisku Widok->Wiondows Name
+         */
+        {
+            JMenuItem mIShowText = new JCheckBoxMenuItem("Windows Name");
+            ((JCheckBoxMenuItem) mIShowText).setState(true);
+            AbstractAction actionShowText = new AbstractAction("Windows Name") {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    View3D view3D = (View3D) panelView;
+                    JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowText;
+                    if (jCheckBoxMenuItem.getState() == true) {
+                        view3D.getAnimator().setShowWindowsName();
+                        System.out.println("show");
+                    }
+                    if (jCheckBoxMenuItem.getState() == false) {
+                        view3D.getAnimator().setHideWindowsName();
+                        System.out.println("hide");
+                    }
+                    view3D.repaint();
+                }
+            };
+
+            mIShowText.addActionListener(actionShowText);
+            mIShowText.setName("mIShowText");
+            mView.add(mIShowText);
+        }
+
+
+
+
+
+
+
     }
     public static void main(String[] args) {
         System.out.println("Hello, Window");

@@ -5,7 +5,7 @@
 package hexatorn.cubewindow;
 
 import hexatorn.cubewindow.animator.Animator;
-import hexatorn.point.Point;
+import hexatorn.draw.point.Point;
 import javax.swing.*;
 import java.awt.*;
 
