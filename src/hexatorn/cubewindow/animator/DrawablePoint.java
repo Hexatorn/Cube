@@ -12,7 +12,9 @@ import java.awt.*;
 public class DrawablePoint extends AbstractDraw implements PaintListener {
 
     private Point point;
-    private int size = 200;
+    {
+        size = 6;
+    }
 
     public DrawablePoint(View3D.AngleOfView angleOfView, Point point) {
         super(angleOfView);
@@ -23,13 +25,9 @@ public class DrawablePoint extends AbstractDraw implements PaintListener {
         this.point = new Point(x,y);
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     @Override
     public void paintSomeone(Graphics g) {
-        g.fillOval(point.getDrawableX()-(size/2),point.getDrawableY()-(size/2),size,size);
+        g.fillOval(point.getDrawableX()-(size/2),point.getDrawableY()-(size/2),size+1,size+1);
     }
 
 
