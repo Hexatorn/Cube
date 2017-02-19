@@ -4,117 +4,69 @@
 
 package hexatorn.cubewindow;
 
+import hexatorn.cubewindow.animator.Animator;
 import hexatorn.point.Point;
-import hexatorn.util.Delegate;
-import hexatorn.util.PaintListener;
-
 import javax.swing.*;
 import java.awt.*;
 
-class View3D extends JPanel {
+public class View3D extends JPanel {
 
-    private int degrees_AngleOfView = 45;
-    private Point point00 = new Point();
-    private Delegate paintDelegate = new Delegate();
+    private AngleOfView angleOfView = new AngleOfView();
+    private Animator animator = new Animator(this);
     private Color backgroundColor = Color.DARK_GRAY;
     private Color usingColor = new Color(255,205,100);
 
     /**
      * Konstruktor Panelu z Obiektem 3D
      */
-    View3D(){
+    public View3D(){
+        System.out.println("Rozpoczecie tworzenia panela");
         setPreferredSize(new Dimension(400, 400));
-        paintDelegate.addMethod(new WindowName());
-        paintDelegate.addMethod(new HelpLines());
+        System.out.println("Zakoczenie tworzenia panela");
     }
 
 
     @Override
+    /**
+     * Rysowanie Komponentu
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        updatePoint00();
+        this.angleOfView.updatePoint00();
         setBackground(backgroundColor);
         g.setColor(usingColor);
-        paintDelegate.run(g);
+        animator.paint(g);
+
+    }
+
+    public Animator getAnimator() {
+        return animator;
     }
 
     /**
      * Aktualizacja początkowego punktu osi współrzędnych
      */
-    private void updatePoint00(){
-        point00.setX(getSize().width/2);
-        point00.setY(getSize().height/2);
-    }
 
-    /**
-     * Klasa rysująca osie współrzędnych
-     */
-    class HelpLines implements PaintListener {
 
-        @Override
-        public void paintSomeone(Graphics g) {
-            int height = getSize().height;
-            int wedth = getSize().width;
-
-            //x-axis
-            g.drawLine(
-                    0,
-                    point00.getY(),
-                    point00.getX()*2,
-                    point00.getY());
-            //x-axis
-            g.drawLine(
-                    point00.getX(),
-                    0,
-                    point00.getX(),
-                    point00.getY()*2);
-            //z-axis
-            double radians_AngleOfView = Math.toRadians(degrees_AngleOfView);
-            g.drawLine(
-                    0,
-                    point00.getY()+(int) (point00.getX()*Math.tan(radians_AngleOfView)),
-                    point00.getX()*2,
-                    point00.getY()-(int) (point00.getX()*Math.tan(radians_AngleOfView)));
-            //System.out.println(Math.tan(radians_AngleOfView));
+    public class AngleOfView{
+        private int degrees = 45;
+        public Point point00 = new Point();
+        public void updatePoint00(){
+            point00.setX(getSize().width/2);
+            point00.setY(getSize().height/2);
         }
-
-        @Override
-        public String toString() {
-            return "Help Lines";
+        public int getDegrees(){
+            return degrees;
+        }
+        public Point getPoint00(){
+            return point00;
+        }
+        public Dimension getPanelSize(){
+            return getSize();
         }
     }
 
-    /**
-     * Klasa rysująca napis w oknie
-     */
-    class WindowName implements PaintListener{
-
-        @Override
-        public void paintSomeone(Graphics g) {
-            g.drawString("Cube Window Project; punkt 00 "+point00.getX()+" "+point00.getY(),20,50);
-        }
-
-        @Override
-        public String toString() {
-            return "Windows Name";
-        }
+    public AngleOfView getAngleOfView() {
+        return angleOfView;
     }
-
-    public void setShowHelpLine(){
-        paintDelegate.addMethod(new HelpLines());
-    }
-
-    public void setHideHelpLine(){
-        paintDelegate.removeMethod(new HelpLines());
-    }
-
-    public  void  setShowWindowsName(){
-        paintDelegate.addMethod(new WindowName());
-    }
-
-    public void setHideWindowsName(){
-        paintDelegate.removeMethod(new WindowName());
-    }
-
 }

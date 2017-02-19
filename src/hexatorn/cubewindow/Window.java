@@ -15,6 +15,7 @@ public class Window extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1280,800);
         setVisible(true);
+        panelView = new View3D();
 
         JMenuBar menuBar = new JMenuBar();
         JMenu mFile = new JMenu("Plik");
@@ -35,10 +36,10 @@ public class Window extends JFrame{
                 View3D view3D = (View3D)panelView;
                 JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowCoordinateLine;
                 if(jCheckBoxMenuItem.getState()==true) {
-                    view3D.setShowHelpLine();
+                    view3D.getAnimator().setShowHelpLine();
                 }
                 if(jCheckBoxMenuItem.getState()==false) {
-                    view3D.setHideHelpLine();
+                    view3D.getAnimator().setHideHelpLine();
                 }
                 view3D.repaint();
             }
@@ -53,11 +54,11 @@ public class Window extends JFrame{
                 View3D view3D = (View3D)panelView;
                 JCheckBoxMenuItem jCheckBoxMenuItem = (JCheckBoxMenuItem) mIShowText;
                 if(jCheckBoxMenuItem.getState()==true) {
-                    view3D.setShowWindowsName();
+                    view3D.getAnimator().setShowWindowsName();
                     System.out.println("show");
                 }
                 if(jCheckBoxMenuItem.getState()==false) {
-                    view3D.setHideWindowsName();
+                    view3D.getAnimator().setHideWindowsName();
                     System.out.println("hide");
                 }
                 view3D.repaint();
@@ -75,7 +76,7 @@ public class Window extends JFrame{
         mView.add(mIShowCoordinateLine);
         mView.add(mIShowText);
 
-        panelView = new View3D();
+
         add(panelView);
         pack();
     }
