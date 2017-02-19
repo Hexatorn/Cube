@@ -11,8 +11,8 @@ public class Point {
 
     }
     public Point(int x , int y ){
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
     }
 
     public void setX(int x) {

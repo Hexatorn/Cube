@@ -6,9 +6,7 @@ import hexatorn.cubewindow.View3D;
  */
 public abstract class AbstractDraw {
     View3D.AngleOfView angleOfView;
-    public AbstractDraw(View3D view3D){
-        this.angleOfView = view3D.getAngleOfView();
-    }
+
     public AbstractDraw(View3D.AngleOfView angleOfView){
         this.angleOfView = angleOfView;
     }

@@ -13,10 +13,6 @@ public class WindowName extends AbstractDraw implements PaintListener {
     public WindowName(View3D.AngleOfView angleOfView) {
         super(angleOfView);
     }
-    public WindowName(View3D view3D) {
-        super(view3D);
-    }
-
 
     @Override
     public void paintSomeone(Graphics g) {

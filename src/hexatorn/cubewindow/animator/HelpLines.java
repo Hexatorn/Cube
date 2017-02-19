@@ -11,9 +11,6 @@ import java.awt.*;
     public HelpLines(View3D.AngleOfView angleOfView) {
         super(angleOfView);
     }
-    public HelpLines(View3D view3D) {
-        super(view3D);
-    }
 
     @Override
     public void paintSomeone(Graphics g) {
@@ -31,7 +28,6 @@ import java.awt.*;
                 angleOfView.getPanelSize().height/2);
         //z-axis
         double radians_AngleOfView = Math.toRadians(angleOfView.getDegrees());
-        System.out.println(""+angleOfView.getDegrees()+"\t"+radians_AngleOfView+"\t"+Math.tan(radians_AngleOfView));
         g.drawLine(
                 angleOfView.getPanelSize().width/2*-1,
                 (int)(angleOfView.getPanelSize().width/2*Math.tan(radians_AngleOfView)),
